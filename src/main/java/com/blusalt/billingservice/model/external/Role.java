@@ -1,4 +1,4 @@
-package com.blusalt.billingservice.model;
+package com.blusalt.billingservice.model.external;
 
 import com.blusalt.billingservice.enums.RoleType;
 import lombok.AllArgsConstructor;

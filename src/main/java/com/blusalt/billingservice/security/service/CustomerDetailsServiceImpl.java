@@ -1,7 +1,7 @@
 package com.blusalt.billingservice.security.service;
 
-import com.blusalt.billingservice.model.Customer;
-import com.blusalt.billingservice.repository.CustomerRepository;
+import com.blusalt.billingservice.model.external.Customer;
+import com.blusalt.billingservice.repository.external.CustomerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,5 +1,6 @@
-package com.blusalt.billingservice.model;
+package com.blusalt.billingservice.model.external;
 
+import com.blusalt.billingservice.model.Base;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
@@ -22,7 +23,7 @@ import java.util.Set;
                 @UniqueConstraint(columnNames = "customerId")
         }
 )
-public class Customer extends Base{
+public class Customer extends Base {
 
     private String customerId;
 

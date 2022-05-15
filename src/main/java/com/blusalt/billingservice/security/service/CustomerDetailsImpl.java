@@ -1,6 +1,6 @@
 package com.blusalt.billingservice.security.service;
 
-import com.blusalt.billingservice.model.Customer;
+import com.blusalt.billingservice.model.external.Customer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

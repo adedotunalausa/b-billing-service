@@ -1,5 +1,6 @@
-package com.blusalt.billingservice.model;
+package com.blusalt.billingservice.model.external;
 
+import com.blusalt.billingservice.model.Base;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -18,7 +19,7 @@ import javax.persistence.UniqueConstraint;
                 @UniqueConstraint(columnNames = "customerId")
     }
 )
-public class Wallet extends Base{
+public class Wallet extends Base {
 
     private String walletId;
 
