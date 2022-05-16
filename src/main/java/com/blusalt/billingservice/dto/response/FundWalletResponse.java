@@ -1,14 +1,16 @@
 package com.blusalt.billingservice.dto.response;
 
-import com.blusalt.billingservice.enums.Status;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
 public class FundWalletResponse {
 
-    private Status status;
-    private FundWalletResponseData data;
+    private String customerId;
+    private String amount;
+    private String transactionStatus;
 
 }

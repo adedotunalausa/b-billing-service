@@ -5,8 +5,6 @@ import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -17,13 +15,18 @@ import javax.validation.constraints.NotNull;
 @Table(name = "transaction")
 public class Transaction extends Base {
 
-    @NotNull
+    private String transactionId;
+
     private String customerId;
 
-    @NotBlank
+    private String walletId;
+
     private String amount;
 
-    @NotNull
     private String status;
+
+    private String currentWalletBalance;
+
+    private String newWalletBalance;
 
 }

@@ -5,7 +5,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -18,7 +17,6 @@ import javax.sql.DataSource;
 import java.util.HashMap;
 
 @Configuration
-@PropertySource({"classpath:multiple-db.properties"})
 @EnableJpaRepositories(
         basePackages = "com.blusalt.billingservice.repository.internal",
         entityManagerFactoryRef = "primaryEntityManager",
@@ -34,7 +32,7 @@ public class PrimaryDatabaseConfig {
     public LocalContainerEntityManagerFactoryBean primaryEntityManager() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(primaryDataSource());
-        em.setPackagesToScan(new String[] {"com.blusalt.billingservice.model.internal"});
+        em.setPackagesToScan(new String[]{"com.blusalt.billingservice.model.internal"});
 
         return getLocalContainerEntityManagerFactoryBean(em, env);
     }
@@ -53,7 +51,7 @@ public class PrimaryDatabaseConfig {
 
     @Bean
     @Primary
-    @ConfigurationProperties(prefix="spring.datasource")
+    @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource primaryDataSource() {
         DriverManagerDataSource dataSource
                 = new DriverManagerDataSource();

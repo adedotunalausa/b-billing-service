@@ -9,6 +9,12 @@ public class FundWalletRequest {
 
     private String customerId;
 
-    private Double amount;
+    private String walletId;
+
+    private String amount;
+
+    private String currentWalletBalance;
+
+    private String newWalletBalance;
 
 }

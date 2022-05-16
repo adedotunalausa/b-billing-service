@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -17,7 +16,6 @@ import javax.sql.DataSource;
 import static com.blusalt.billingservice.config.PrimaryDatabaseConfig.getLocalContainerEntityManagerFactoryBean;
 
 @Configuration
-@PropertySource({"classpath:multiple-db.properties"})
 @EnableJpaRepositories(
         basePackages = "com.blusalt.billingservice.repository.external",
         entityManagerFactoryRef = "secondaryEntityManager",
@@ -32,13 +30,13 @@ public class SecondaryDatabaseConfig {
     public LocalContainerEntityManagerFactoryBean secondaryEntityManager() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(secondaryDataSource());
-        em.setPackagesToScan(new String[] {"com.blusalt.billingservice.model.external"});
+        em.setPackagesToScan(new String[]{"com.blusalt.billingservice.model.external"});
 
         return getLocalContainerEntityManagerFactoryBean(em, env);
     }
 
     @Bean
-    @ConfigurationProperties(prefix="spring.secondary-datasource")
+    @ConfigurationProperties(prefix = "spring.secondary-datasource")
     public DataSource secondaryDataSource() {
         DriverManagerDataSource dataSource
                 = new DriverManagerDataSource();
