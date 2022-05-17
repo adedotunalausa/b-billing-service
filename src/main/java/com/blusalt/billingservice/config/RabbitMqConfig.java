@@ -12,9 +12,17 @@ public class RabbitMqConfig {
     @Value("${queue.fund_wallet_request}")
     private String FUND_WALLET_REQUEST_QUEUE;
 
+    @Value("${queue.fund_wallet_response}")
+    private String FUND_WALLET_RESPONSE_QUEUE;
+
     @Bean
     public Queue fundWalletRequestQueue() {
         return new Queue(FUND_WALLET_REQUEST_QUEUE);
+    }
+
+    @Bean
+    public Queue fundWalletResponseQueue() {
+        return new Queue(FUND_WALLET_RESPONSE_QUEUE);
     }
 
     @Bean

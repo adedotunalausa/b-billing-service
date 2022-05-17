@@ -1,4 +1,4 @@
-package com.blusalt.billingservice.dto.response;
+package com.blusalt.billingservice.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class FundWalletResponse {
-
+public class ChargeAccountRequest {
     private String customerId;
     private String amount;
     private String walletId;
@@ -18,5 +17,4 @@ public class FundWalletResponse {
     private String newWalletBalance;
     private String transactionStatus;
     private String transactionId;
-
 }

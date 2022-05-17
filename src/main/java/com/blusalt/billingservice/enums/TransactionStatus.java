@@ -7,7 +7,8 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum TransactionStatus {
     PENDING("pending"),
-    SUCCESS("success");
+    SUCCESS("success"),
+    FAILED("failed");
 
     private final String alias;
 }

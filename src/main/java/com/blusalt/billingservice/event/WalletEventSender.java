@@ -1,5 +1,6 @@
 package com.blusalt.billingservice.event;
 
+import com.blusalt.billingservice.dto.request.ChargeAccountRequest;
 import com.blusalt.billingservice.dto.response.FundWalletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.Map;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class WalletEventService {
+public class WalletEventSender {
 
     private final RabbitMessagingTemplate rabbitMessagingTemplate;
 
@@ -23,9 +24,9 @@ public class WalletEventService {
     @Value("${queue.fund_wallet_request}")
     private String FUND_WALLET_REQUEST_QUEUE;
 
-    public void pushFundWalletRequestToQueue(FundWalletResponse fundWalletResponse) {
+    public void pushFundWalletRequestToQueue(ChargeAccountRequest chargeAccountRequest) {
 
-        Map message = new ObjectMapper().convertValue(fundWalletResponse, Map.class);
+        Map message = new ObjectMapper().convertValue(chargeAccountRequest, Map.class);
         rabbitMessagingTemplate.setMessageConverter(messageConverter);
         rabbitMessagingTemplate.convertAndSend(FUND_WALLET_REQUEST_QUEUE, message);
         log.info("pushed new transaction request: {} to queue", message);
