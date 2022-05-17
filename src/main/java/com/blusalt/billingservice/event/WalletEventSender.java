@@ -1,7 +1,6 @@
 package com.blusalt.billingservice.event;
 
 import com.blusalt.billingservice.dto.request.ChargeAccountRequest;
-import com.blusalt.billingservice.dto.response.FundWalletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

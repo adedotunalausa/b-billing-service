@@ -42,20 +42,21 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public void completeWalletFunding(FundWalletResponse fundWalletResponse) {
         try {
-            log.info("Completing wallet funding for customer: {}", fundWalletResponse.getCustomerId());
             BasicResponse response = customerFeignClient.updateCustomerWallet(fundWalletResponse);
             if (response.getStatus().equals(Status.SUCCESS)) {
-                updateTransactionStatus(fundWalletResponse.getTransactionId(), fundWalletResponse.getNewWalletBalance());
+                updateTransactionStatus(fundWalletResponse.getTransactionId(), fundWalletResponse);
             }
+            log.info("Completed wallet funding for customer: {}", fundWalletResponse.getCustomerId());
         } catch (Exception exception) {
             log.error("There was an error while completing wallet funding: {}", exception.getMessage());
         }
     }
 
-    private void updateTransactionStatus(String transactionId, String currentWalletBalance) {
+    private void updateTransactionStatus(String transactionId, FundWalletResponse fundWalletResponse) {
         Transaction transaction = getTransaction(transactionId);
         transaction.setStatus(TransactionStatus.SUCCESS.getAlias());
-        transaction.setCurrentWalletBalance(currentWalletBalance);
+        transaction.setCurrentWalletBalance(fundWalletResponse.getCurrentWalletBalance());
+        transaction.setNewWalletBalance(fundWalletResponse.getNewWalletBalance());
         transactionRepository.save(transaction);
     }
 
